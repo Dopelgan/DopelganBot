@@ -10,4 +10,9 @@ class Department extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function guardRelation()
+    {
+        return $this->hasMany(Guard::class);
+    }
 }

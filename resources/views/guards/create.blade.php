@@ -1,14 +1,9 @@
-<!-- resources/views/guards/create.blade.php -->
+@extends('layouts.app')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добавить дежурного</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+@section('content')
+
+<title>Добавить дежурного</title>
+
 <div class="container mt-4">
     <h1>Добавить нового дежурного</h1>
 
@@ -20,7 +15,8 @@
             <select name="department_id" id="department_id" class="form-control" required>
                 <option value="">Выберите подразделение</option>
                 @foreach ($departments as $department)
-                    <option value="{{ $department->id }}" {{ isset($guard) && $guard->department_id == $department->id ? 'selected' : '' }}>
+                    <option
+                        value="{{ $department->id }}" {{ isset($guard) && $guard->department_id == $department->id ? 'selected' : '' }}>
                         {{ $department->name }}
                     </option>
                 @endforeach
@@ -45,5 +41,4 @@
         <button type="submit" class="btn btn-primary">Добавить</button>
     </form>
 </div>
-</body>
-</html>
+@endsection

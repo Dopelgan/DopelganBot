@@ -10,7 +10,6 @@ class CreateGuardsTable extends Migration
     {
         Schema::create('guards', function (Blueprint $table) {
             $table->id();
-            $table->string('structure'); // Название структуры
             $table->string('name');      // Имя дежурного
             $table->string('contact');   // Контактные данные
             $table->string('telegram_link')->nullable(); // Ссылка на Telegram

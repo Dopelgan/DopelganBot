@@ -66,30 +66,4 @@ class GuardController extends Controller
         return redirect()->route('guards.index')->with('success', 'Дежурный удален успешно!');
     }
 
-    public function editMonthlyDuties()
-    {
-        $guards = Guard::all();
-        return view('guards.edit_monthly_duties', compact('guards'));
-    }
-
-    public function updateMonthlyDuties(Request $request)
-    {
-        $data = $request->except('_token');
-
-        foreach ($data as $id => $duties) {
-            $guard = Guard::find($id);
-            $dutySchedule = [];
-            foreach ($duties as $day => $details) {
-                $dutySchedule[$day] = [
-                    'duty' => $details['duty'],
-                    'start' => $details['start'] ?? null,
-                    'end' => $details['end'] ?? null,
-                ];
-            }
-            $guard->duty_schedule = $dutySchedule;
-            $guard->save();
-        }
-
-        return redirect()->route('guards.edit_monthly_duties')->with('success', 'Дежурные обновлены.');
-    }
 }

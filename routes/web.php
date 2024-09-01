@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DutyScheduleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuardController;
@@ -27,25 +28,18 @@ Route::prefix('admin')->middleware('role:ADMIN')->group(function () {
     Route::get('/guards/{id}/edit', [GuardController::class, 'edit'])->name('guards.edit');
     Route::put('/guards/{id}', [GuardController::class, 'update'])->name('guards.update');
     Route::delete('/guards/{id}', [GuardController::class, 'destroy'])->name('guards.destroy');
-    // Роут для отображения формы редактирования ежемесячного расписания дежурных
-    Route::get('/guards/edit-monthly-duties', [GuardController::class, 'editMonthlyDuties'])
-        ->name('guards.edit_monthly_duties')
-        ->middleware('auth'); // Потребуется аутентификация, если это админская часть
-    // Роут для обработки обновления данных дежурных
-    Route::post('/guards/update-monthly-duties', [GuardController::class, 'updateMonthlyDuties'])
-        ->name('guards.update_monthly_duties')
-        ->middleware('auth'); // Потребуется аутентификация, если это админская часть
+
+    Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.index');
+    Route::get('/departments/create', [DepartmentController::class, 'create'])->name('departments.create');
+    Route::post('/departments', [DepartmentController::class, 'store'])->name('departments.store');
+    Route::get('/departments/{id}/edit', [DepartmentController::class, 'edit'])->name('departments.edit');
+    Route::put('/departments/{id}', [DepartmentController::class, 'update'])->name('departments.update');
+    Route::delete('/departments/{id}', [DepartmentController::class, 'destroy'])->name('departments.destroy');
+
+    Route::get('/dutySchedule/{id}/edit-monthly-duties', [DutyScheduleController::class, 'editMonthlyDuties'])->name('dutySchedule.edit_monthly_duties');
+    Route::put('/dutySchedule/{id}/update-monthly-duties', [DutyScheduleController::class, 'updateMonthlyDuties'])->name('dutySchedule.update_monthly_duties');
 
 });
-
-
-Route::get('/admin/departments', [DepartmentController::class, 'index'])->name('departments.index');
-Route::get('/admin/departments/create', [DepartmentController::class, 'create'])->name('departments.create');
-Route::post('/admin/departments', [DepartmentController::class, 'store'])->name('departments.store');
-Route::get('/admin/departments/{id}/edit', [DepartmentController::class, 'edit'])->name('departments.edit');
-Route::put('/admin/departments/{id}', [DepartmentController::class, 'update'])->name('departments.update');
-Route::delete('/admin/departments/{id}', [DepartmentController::class, 'destroy'])->name('departments.destroy');
-
 
 Auth::routes();
 

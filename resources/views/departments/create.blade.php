@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
+@extends('layouts.app')
+
+@section('content')
     <title>Добавить подразделение</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-<body>
 <div class="container mt-4">
     <h1>Добавить подразделение</h1>
 
@@ -17,5 +14,4 @@
         <button type="submit" class="btn btn-primary mt-3">Добавить</button>
     </form>
 </div>
-</body>
-</html>
+@endsection
