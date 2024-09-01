@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TelegramController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/telegram/webhook', [TelegramController::class, 'webhook']);
+Route::any('/telegram/webhook', [TelegramController::class, 'webhook']);
+
