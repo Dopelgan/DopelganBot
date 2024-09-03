@@ -39,7 +39,10 @@
                             <a class="nav-link" href="{{ route('departments.index') }}">Подразделения</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('guards.index') }}">Дежурные</a>
+                            <a class="nav-link" href="{{ route('duties.index') }}">Дежурные</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('dutySchedules.uploadForm') }}">Загрузить график дежурств</a>
                         </li>
                     </ul>
 

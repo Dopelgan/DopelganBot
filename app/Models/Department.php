@@ -9,10 +9,10 @@ class Department extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['id', 'name'];
 
-    public function guardRelation()
+    public function duty()
     {
-        return $this->hasMany(Guard::class);
+        return $this->hasMany(Duty::class);
     }
 }

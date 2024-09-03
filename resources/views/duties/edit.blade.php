@@ -5,7 +5,7 @@
     <div class="container mt-4">
         <h1>Редактировать дежурного</h1>
 
-        <form action="{{ route('guards.update', $guard->id) }}" method="POST">
+        <form action="{{ route('duties.update', $guard->id) }}" method="POST">
             @csrf
             @method('PUT')
 

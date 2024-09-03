@@ -7,7 +7,7 @@
 <div class="container mt-4">
     <h1>Добавить нового дежурного</h1>
 
-    <form action="{{ route('guards.store') }}" method="POST">
+    <form action="{{ route('duties.store') }}" method="POST">
         @csrf
 
         <div class="form-group">

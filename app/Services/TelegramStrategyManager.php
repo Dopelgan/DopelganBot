@@ -14,8 +14,7 @@ class TelegramStrategyManager
         $this->strategies = [
             '/start' => \App\Services\TelegramStrategies\StartCommandStrategy::class,
             '/help' => \App\Services\TelegramStrategies\HelpCommandStrategy::class,
-            '/about' => \App\Services\TelegramStrategies\AboutCommandStrategy::class,
-            '/guard' => \App\Services\TelegramStrategies\GuardCommandStrategy::class,
+            '/duty' => \App\Services\TelegramStrategies\DutyCommandStrategy::class,
         ];
     }
 

@@ -12,15 +12,18 @@ class DutySchedule extends Model
     protected $fillable = [
         'department_id',
         'guard_id',
-        'date',
-        'start',
-        'end',
+        'start_at',
+        'end_at',
     ];
 
-    // Определите связь с моделью Guard
-    public function guardRelation()
+    public function duty()
     {
-        return $this->belongsTo(Guard::class);
+        return $this->belongsTo(Duty::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 }
 

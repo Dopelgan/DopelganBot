@@ -17,7 +17,7 @@ class HelpCommandStrategy implements TelegramStrategyInterface
     {
         $helpText = "Доступные команды:\n";
         $helpText .= "/start - Запускает бот и предоставляет информацию о его функционале.\n";
-        $helpText .= "/guard [structure] - Выводит дежурного для указанной структуры.\n";
+        $helpText .= "/duty - Выводит дежурных.\n";
 
         $this->telegramService->sendMessage($chatId, $helpText);
     }

@@ -1,19 +1,18 @@
 <?php
 
-// app/Models/Guard.php
+// app/Models/Duty.php
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Guard extends Model
+class Duty extends Model
 {
     protected $fillable = [
-        'structure',
+        'id',
         'name',
         'contact',
         'telegram_link',
-        'duty_schedule',
         'department_id',
     ];
 

@@ -15,7 +15,7 @@ class StartCommandStrategy implements TelegramStrategyInterface
 
     public function handle($chatId, $text, $photo)
     {
-        $this->telegramService->sendMessage($chatId, 'Привет! Я бот для получения информации. Используйте команды /help и /guard [structure].');
+        $this->telegramService->sendMessage($chatId, 'Привет! Я бот для получения информации. Используйте команду /help для получение информации о доступных командах.');
     }
 }
 

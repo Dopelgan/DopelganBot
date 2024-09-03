@@ -13,7 +13,7 @@
 
         <a href="{{ route('departments.create') }}" class="btn btn-primary mb-3">Добавить подразделение</a>
 
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>Название</th>
@@ -24,9 +24,7 @@
             @foreach ($departments as $department)
                 <tr>
                     <td>
-                        <a href="{{ route('dutySchedule.edit_monthly_duties', ['id' => $department->id]) }}">
-                            {{ $department->name }}
-                        </a>
+                        {{ $department->name }}
                     </td>
                     <td>
                         <a href="{{ route('departments.edit', $department->id) }}" class="btn btn-warning btn-sm">Изменить</a>

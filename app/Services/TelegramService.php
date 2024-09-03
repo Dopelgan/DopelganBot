@@ -21,6 +21,7 @@ class TelegramService
         $this->telegram->sendMessage([
             'chat_id' => $chatId,
             'text' => $text,
+            'parse_mode' => 'HTML',
         ]);
         } catch (\Exception $e) {
             Log::error('Telegram sendMessage error: ' . $e->getMessage());

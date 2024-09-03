@@ -15,7 +15,7 @@ class SetWebhook extends Command
     {
         $telegram = new Api(env('TELEGRAM_BOT_TOKEN'));
 
-        $url = env('TELEGRAM_WEBHOOK_URL') . '/api/telegram/webhook'; // Убедитесь, что путь правильный
+        $url = env('TELEGRAM_WEBHOOK_URL') . 'api/telegram/webhook'; // Убедитесь, что путь правильный
 
         try {
             $response = $telegram->setWebhook(['url' => $url]);

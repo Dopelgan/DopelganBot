@@ -11,14 +11,13 @@ class CreateDutySchedulesTable extends Migration
         Schema::create('duty_schedules', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('department_id');
-            $table->unsignedBigInteger('guard_id');
-            $table->date('date'); // Дата дежурства
-            $table->time('start'); // Время начала
-            $table->time('end'); // Время окончания
+            $table->unsignedBigInteger('duty_id');
+            $table->dateTime('start_at'); // Время начала
+            $table->dateTime('end_at'); // Время окончания
             $table->timestamps();
 
-            // Внешний ключ для связи с таблицей охранников
-            $table->foreign('guard_id')->references('id')->on('guards')->onDelete('cascade');
+            // Внешний ключ для связи с таблицей дежурных
+            $table->foreign('duty_id')->references('id')->on('duties')->onDelete('cascade');
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
         });
     }
