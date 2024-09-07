@@ -36,8 +36,8 @@ class DutyCommandStrategy implements TelegramStrategyInterface
                 $department = $dutySchedule->department;
                 $duty = $dutySchedule->duty;
 
-                $message .= "<b>" . ($department ? $department->name : 'Неизвестное') . "</b> - " .($duty ? $duty->name : 'Неизвестный') . "\n";
-                $message .= ($duty ? $duty->contact : 'Неизвестно') . " | " . ($duty ? $duty->telegram_link : 'Неизвестно') . "\n\n";
+                $message .= "<b>" . ($department ? $department->name : 'Неизвестное') .
+                    "</b> - " .($duty ? $duty->name : 'Неизвестный') . " " . ($duty ? $duty->contact : 'Неизвестно') . "\n\n";
             }
         }
 

@@ -9,6 +9,12 @@ class TelegramStrategyManager
 {
     protected $strategies;
 
+    // Здесь можно добавить список разрешённых chat_id
+    protected $allowedChatIds = [
+        1538089400, // Пример chat_id пользователя, которому разрешён доступ
+        // Добавьте другие chat_id, если нужно
+    ];
+
     public function __construct()
     {
         $this->strategies = [
@@ -20,6 +26,12 @@ class TelegramStrategyManager
 
     public function handle($chatId, $text, $photo)
     {
+        // Проверяем, что chat_id отправителя разрешённый
+        if (!in_array($chatId, $this->allowedChatIds)) {
+            $this->unauthorizedResponse($chatId);
+            return;
+        }
+
         foreach ($this->strategies as $command => $strategyClass) {
             if (Str::startsWith($text, $command)) {
                 $strategy = app($strategyClass);
@@ -30,6 +42,11 @@ class TelegramStrategyManager
 
         // Обработка неизвестных команд
         $this->defaultResponse($chatId);
+    }
+
+    protected function unauthorizedResponse($chatId)
+    {
+        app(TelegramService::class)->sendMessage($chatId, 'У вас нет доступа к этому сервису.');
     }
 
     protected function defaultResponse($chatId)
