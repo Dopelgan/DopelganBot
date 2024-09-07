@@ -27,7 +27,7 @@
             @foreach($guards as $guard)
                 <tr>
                     <td>{{ $guard->id }}</td>
-                    <td>{{ $guard->department->name}}</td>
+                    @if (isset($guard->department->name))<td>{{ $guard->department->name}}</td>@endif
                     <td>{{ $guard->name }}</td>
                     <td>{{ $guard->contact }}</td>
                     <td>{{ $guard->telegram_link }}</td>
