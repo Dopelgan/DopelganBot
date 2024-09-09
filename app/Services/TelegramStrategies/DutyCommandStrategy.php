@@ -42,6 +42,6 @@ class DutyCommandStrategy implements TelegramStrategyInterface
         }
 
         // Отправляем сообщение через TelegramService с использованием Markdown
-        $this->telegramService->sendMessage($chatId, $message, 'MarkdownV2');
+        $this->telegramService->sendMessage($chatId, $message);
     }
 }
