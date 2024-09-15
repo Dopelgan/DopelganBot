@@ -18,7 +18,7 @@ class DutyCommandStrategy implements TelegramStrategyInterface
     public function handle($chatId, $text, $photo)
     {
         // Получаем текущее время
-        $now = Carbon::now();
+        $now = Carbon::now()->addHours(3);
 
         // Получаем активные дежурства, которые включают текущее время
         $dutySchedules = DutySchedule::where('start_at', '<=', $now)

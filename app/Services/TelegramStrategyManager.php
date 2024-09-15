@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-use App\Services\TelegramStrategies\TelegramStrategyInterface;
+use App\Services\TelegramStrategies\DutyCommandStrategy;
+use App\Services\TelegramStrategies\HelpCommandStrategy;
+use App\Services\TelegramStrategies\StartCommandStrategy;
 use Illuminate\Support\Str;
 
 class TelegramStrategyManager
@@ -10,19 +12,16 @@ class TelegramStrategyManager
     protected $strategies;
 
     // Здесь можно добавить список разрешённых chat_id
-    protected $allowedChatIds = [
-        1538089400,
-        1813159593,
-        '-1002104405298',// Пример chat_id пользователя, которому разрешён доступ
-        // Добавьте другие chat_id, если нужно
-    ];
+    protected $allowedChatIds;
 
     public function __construct()
     {
+        // Преобразуем строку из env в массив
+        $this->allowedChatIds = explode(',', env('ALLOWED_CHAT_IDS'));
         $this->strategies = [
-            '/start' => \App\Services\TelegramStrategies\StartCommandStrategy::class,
-            '/help' => \App\Services\TelegramStrategies\HelpCommandStrategy::class,
-            '/duty' => \App\Services\TelegramStrategies\DutyCommandStrategy::class,
+            '/start' => StartCommandStrategy::class,
+            '/help' => HelpCommandStrategy::class,
+            '/duty' => DutyCommandStrategy::class,
         ];
     }
 
